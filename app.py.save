@@ -1,0 +1,21 @@
+from flask import Flask, request, jsonify
+from twilio.twiml.messaging_response import MessagingResponse
+
+app = Flask(__name__)
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    # Проверяем, что контент запроса — JSON
+    if request.content_type != 'application/json':
+        return jsonify({"error": "Content-Type must be application/json"}), 415
+
+    # Получаем данные от Twilio
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "Invalid JSON"}), 400
+
+    # Логируем входящее сообщение
+    message_body = data.get("Body", "")
+    sender_number = data.get("From", "")
+
+    print(f"📩 Получено сообщение от {sender_num  nano app.py 

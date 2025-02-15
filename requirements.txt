@@ -1,0 +1,6 @@
+flask
+openai
+twilio
+psycopg2-binary
+sqlalchemy
+gunicorn
